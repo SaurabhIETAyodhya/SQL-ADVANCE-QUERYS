@@ -1,0 +1,13 @@
+QUERY THAT IS USE TO BACKUP THE DATABASE IN SQL SERVER
+
+declare @filename varchar(90);
+declare @db_name varchar(20);
+declare @fileDate varchar(20);
+
+set @filename = 'PATH OF BACKUP LOCATION ';
+set @db_name = 'DATABASE NAME';
+set @fileDate = CONVERT(varchar(20), getdate(), 106);
+
+set @filename = @filename + @db_name + '_' + RTRIM(@fileDate) + '.bak';
+
+backup database @db_name to Disk = @filename;
